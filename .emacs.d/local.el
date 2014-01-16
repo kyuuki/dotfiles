@@ -1,4 +1,4 @@
-;;; local.el --- �}�V���Ɉˑ�����ݒ�
+;;; local.el --- マシンに依存する設定
 
 (setq local-howm-directory "t:/txt/howm/")
 
