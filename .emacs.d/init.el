@@ -28,6 +28,9 @@
 ; setq と setq-default の違いは？
 ; http://www.geocities.co.jp/SiliconValley-Bay/9285/EMACS-JA/emacs_465.html
 
+;;; 文字コード
+(set-default-coding-systems 'utf-8)
+
 ;;; その他
 
 ; gnupack では、サイズを config.ini で設定するのがお作法のようだ。
