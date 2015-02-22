@@ -42,6 +42,10 @@
 ;(tool-bar-mode nil)  ; Emacs 24 では表示されてしまう。
 (tool-bar-mode 0)
 
+;; ビープ音を消す
+(setq visible-bell t)
+(setq ring-bell-function 'ignore)
+
 ;; 行番号表示
 (global-linum-mode t)
 (set-face-attribute 'linum nil
