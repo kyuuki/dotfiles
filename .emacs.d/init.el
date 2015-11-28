@@ -6,7 +6,6 @@
 ;;;;
 ;;;; 全体
 ;;;;
-
 (setq load-path (append '("~/.emacs.d" "~/.emacs.d/lib") load-path))
 (require 'local)
 (setq fill-column 120)
@@ -19,6 +18,10 @@
 (global-set-key (kbd "C-m") 'newline-and-indent)
 (global-set-key (kbd "C-j") 'newline)
 (global-set-key (kbd "C-x n") 'goto-line)
+(global-set-key (kbd "C-t") 'other-window)
+
+(winner-mode 1)
+(global-set-key (kbd "C-q") 'winner-undo)
 
 ;;; Tab 設定
 ;(setq default-tab-width 4)
@@ -29,7 +32,9 @@
 ; http://www.geocities.co.jp/SiliconValley-Bay/9285/EMACS-JA/emacs_465.html
 
 ;;; 文字コード
-(set-default-coding-systems 'utf-8)
+; http://yohshiy.blog.fc2.com/blog-entry-273.html
+;(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8-unix)
 
 ;;; その他
 
@@ -127,9 +132,21 @@
              )
           )
 
+;;; markdown-mode
+
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.rd" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
 ;;;;
 ;;;; 各 Emacs Lisp 設定
 ;;;;
+
+;;; パッケージ管理
+
+(package-initialize)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;;; auto-install (元 install-elisp.el)
 
@@ -147,11 +164,18 @@
   (global-set-key "\C-c,," 'howm-menu)
   (setq howm-menu-lang 'ja)
   (setq howm-directory local-howm-directory)
+
+  ; http://blechmusik.hatenablog.jp/entry/2013/07/09/015124
+  ;(setq howm-view-use-grep t)
+  ;(setq howm-process-coding-system 'utf-8-unix)
+
   (setq howm-view-external-viewer-assoc
         '(("[.]\\(chm\\|djvu\\|html\\|exe\\|ps\\|gz\\|rar\\|zip\\|jpg\\|mp3\\|gif\\|png\\|pdf\\|doc\\|xls\\|ppt\\)$" . "fiber.exe %s")
           ("[.]dvi$" . "dviout %s"))))
 
+
 ;;; anything
+
 ; Emacs 実践入門
 ; (auto-install-batch "anything")
 (when (require 'anything nil t)
