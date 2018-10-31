@@ -36,6 +36,12 @@
 ;(set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
+;;; バックアップ
+; http://yohshiy.blog.fc2.com/blog-entry-319.html
+(setq make-backup-files t)
+(setq auto-save-list-file-prefix nil)
+(setq create-lockfiles nil)
+
 ;;; その他
 
 ; gnupack では、サイズを config.ini で設定するのがお作法のようだ。
