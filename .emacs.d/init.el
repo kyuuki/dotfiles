@@ -6,7 +6,7 @@
 ;;;;
 ;;;; 全体
 ;;;;
-(setq load-path (append '("~/.emacs.d" "~/.emacs.d/lib") load-path))
+(setq load-path (append '("~/.emacs.d/lib" "~/.emacs.d/conf") load-path))
 (require 'local)
 (setq fill-column 120)
 (ffap-bindings)
@@ -41,6 +41,12 @@
 (require 'eaw)
 (eaw-fullwidth)
 
+;;; バックアップ
+; http://yohshiy.blog.fc2.com/blog-entry-319.html
+(setq make-backup-files t)
+(setq auto-save-list-file-prefix nil)
+(setq create-lockfiles nil)
+
 ;;; その他
 
 ; gnupack では、サイズを config.ini で設定するのがお作法のようだ。
@@ -49,8 +55,8 @@
 (setq inhibit-startup-message t)
 
 ;; ツールバー非表示
-;(tool-bar-mode nil)  ; Emacs 24 では表示されてしまう。
-;(tool-bar-mode 0)
+(when window-system
+  (tool-bar-mode 0))
 
 ;; ビープ音を消す
 (setq visible-bell t)
@@ -163,6 +169,20 @@
 
 ;;; howm
 ;; ed エラーが出る
+;; (setq load-path (cons "~/.emacs.d/lib/howm" load-path))
+;; (when (require 'howm nil t)
+;;   (autoload 'howm-menu "howm-mode" "Hitori Otegaru Wiki Modoki" t)
+;;   (global-set-key "\C-c,," 'howm-menu)
+;;   (setq howm-menu-lang 'ja)
+;;   (setq howm-directory local-howm-directory)
+
+;;   ; http://blechmusik.hatenablog.jp/entry/2013/07/09/015124
+;;   ;(setq howm-view-use-grep t)
+;;   ;(setq howm-process-coding-system 'utf-8-unix)
+
+;;   (setq howm-view-external-viewer-assoc
+;;         '(("[.]\\(chm\\|djvu\\|html\\|exe\\|ps\\|gz\\|rar\\|zip\\|jpg\\|mp3\\|gif\\|png\\|pdf\\|doc\\|xls\\|ppt\\)$" . "fiber.exe %s")
+;;           ("[.]dvi$" . "dviout %s"))))
 
 ;;; anything
 
