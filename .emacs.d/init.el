@@ -138,6 +138,7 @@
              (add-to-list 'ruby-encoding-map '(undecided . cp932))
              )
           )
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;;; markdown-mode
 
