@@ -2,7 +2,7 @@
 
 ;; コメントの慣習は以下に従う。
 ;; http://www.bookshelf.jp/texi/elisp-manual/21-2-8/jp/elisp_42.html#SEC665
-
+(setq ruby-insert-encoding-magic-comment nil)
 ;;;;
 ;;;; 全体
 ;;;;
@@ -36,6 +36,11 @@
 ;(set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 
+;;; East Asian Ambiguous Width 問題
+; https://github.com/hamano/locale-eaw
+(require 'eaw)
+(eaw-fullwidth)
+
 ;;; バックアップ
 ; http://yohshiy.blog.fc2.com/blog-entry-319.html
 (setq make-backup-files t)
@@ -50,7 +55,6 @@
 (setq inhibit-startup-message t)
 
 ;; ツールバー非表示
-;(tool-bar-mode nil)  ; Emacs 24 では表示されてしまう。
 (when window-system
   (tool-bar-mode 0))
 
@@ -152,20 +156,20 @@
 
 ;;; パッケージ管理
 
-(package-initialize)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+;(package-initialize)
+;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;;; auto-install (元 install-elisp.el)
 
 ; Emacs 実践入門
-(when (require 'auto-install nil t)
-  (setq auto-install-directory "~/.emacs.d/lib")
-  (auto-install-update-emacswiki-package-name t)
-  (auto-install-compatibility-setup))
+;(when (require 'auto-install nil t)
+;  (setq auto-install-directory "~/.emacs.d/lib")
+;  (auto-install-update-emacswiki-package-name t)
+;  (auto-install-compatibility-setup))
 
 ;;; howm
-
+;; ed エラーが出る
 ;; (setq load-path (cons "~/.emacs.d/lib/howm" load-path))
 ;; (when (require 'howm nil t)
 ;;   (autoload 'howm-menu "howm-mode" "Hitori Otegaru Wiki Modoki" t)
@@ -180,7 +184,6 @@
 ;;   (setq howm-view-external-viewer-assoc
 ;;         '(("[.]\\(chm\\|djvu\\|html\\|exe\\|ps\\|gz\\|rar\\|zip\\|jpg\\|mp3\\|gif\\|png\\|pdf\\|doc\\|xls\\|ppt\\)$" . "fiber.exe %s")
 ;;           ("[.]dvi$" . "dviout %s"))))
-
 
 ;;; anything
 
