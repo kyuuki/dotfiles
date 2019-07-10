@@ -154,11 +154,14 @@
 ;;;; 各 Emacs Lisp 設定
 ;;;;
 
-;;; パッケージ管理
-
-;(package-initialize)
-;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+; https://qiita.com/Maizu/items/fee34328f559c7dc59d8#packageel%E3%81%AE%E8%A8%AD%E5%AE%9A
+;;; パッケージ管理 (package.el)
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+;(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(package-initialize)
 
 ;;; auto-install (元 install-elisp.el)
 
@@ -433,3 +436,9 @@
           (lambda ()
             (define-key dired-mode-map "x" 'my-file-open-by-windows)))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (slim-mode ##))))
