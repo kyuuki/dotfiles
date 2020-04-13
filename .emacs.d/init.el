@@ -43,7 +43,10 @@
 
 ;;; バックアップ
 ; http://yohshiy.blog.fc2.com/blog-entry-319.html
-(setq make-backup-files t)
+;;; *.~ とかのバックアップファイルを作らない
+(setq make-backup-files nil)
+;;; .#* とかのバックアップファイルを作らない
+(setq auto-save-default nil)
 (setq auto-save-list-file-prefix nil)
 (setq create-lockfiles nil)
 
