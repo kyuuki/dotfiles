@@ -16,11 +16,24 @@
 ;;; FFAP
 (ffap-bindings)
 
+;;; バックアップ
+;; http://yohshiy.blog.fc2.com/blog-entry-319.html
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq auto-save-list-file-prefix nil)
+(setq create-lockfiles nil)
+
 ;;;; 日本語
 
 ;;; 文字コード
 ;; http://yohshiy.blog.fc2.com/blog-entry-273.html
 (prefer-coding-system 'utf-8-unix)
+
+;;;; 表示
+(if window-system
+  (tool-bar-mode 0)
+  (menu-bar-mode -1)
+)
 
 ;;;; leaf
 
@@ -47,9 +60,5 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 ;; </leaf-install-code>
-
-(leaf cus-start
-  :custom
-  (if (window-system) (menu-bar-mode . nil)))
 
 (provide 'init)
