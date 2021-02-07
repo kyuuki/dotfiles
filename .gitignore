@@ -16,3 +16,6 @@
 *.exe
 *.out
 *.app
+
+.emacs.d/elpa
+.emacs.d.leaf/elpa
