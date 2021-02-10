@@ -19,3 +19,4 @@
 
 .emacs.d/elpa
 .emacs.d.leaf/elpa
+.emacs.d.leaf/el-get
