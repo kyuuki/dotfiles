@@ -71,4 +71,7 @@
   (eaw-fullwidth)
   )
 
+;;;; Ruby
+(setq ruby-insert-encoding-magic-comment nil)
+
 (provide 'init)
