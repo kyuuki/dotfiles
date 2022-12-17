@@ -33,4 +33,10 @@
 (global-set-key (kbd "C-t") 'other-window)
 (global-set-key (kbd "C-c l") 'org-store-link) ; Org-mode 関係だけど
 
+;; 文字コード
+;; Windows 系では Shift JIS の優先度が高いので念のため指定しておく。
+(prefer-coding-system 'utf-8)
+;; https://ardggy.hatenablog.jp/entry/2015/10/20/215852
+;(coding-system-priority-list)
+
 ;; フォント関係は最低限デフォルトでもなんとかなる。
